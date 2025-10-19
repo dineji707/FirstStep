@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { BookOpen, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import YouTubePlaylist from "@/components/YouTubePlaylist";
 
 const CoreCS = () => {
   return (
@@ -42,43 +43,15 @@ const CoreCS = () => {
                 Master Operating Systems, DBMS, Computer Networks, and System Design with these courses.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  { id: 'PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O', title: 'Operating Systems' },
-                  { id: 'PLrjkTql3jnm-CLxHftqLgkrZbM8fUt0vn', title: 'Database Management Systems' },
-                  { id: 'PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx', title: 'Computer Networks' },
-                  { id: 'PLTCrU9sGyburBw9wNOHebv9SjlE4Elv5a', title: 'System Design' }
-                ].map((video, index) => (
-                  <motion.div
-                    key={video.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="rounded-2xl overflow-hidden backdrop-blur-lg border border-sky-200/40 shadow-lg group relative"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(147, 197, 253, 0.15) 50%, rgba(248, 113, 113, 0.15) 100%)'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/10 via-blue-400/10 to-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
-                    <div className="relative">
-                      <div className="aspect-video">
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src={`https://www.youtube.com/embed/videoseries?list=${video.id}`}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="rounded-t-2xl"
-                        />
-                      </div>
-                      <div className="p-4 bg-white/20 backdrop-blur-sm">
-                        <h3 className="font-semibold text-foreground">{video.title}</h3>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="grid grid-cols-1 gap-6">
+                <YouTubePlaylist
+                  videos={[
+                    { id: 'os', title: 'Operating Systems', playlistId: 'PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O' },
+                    { id: 'dbms', title: 'Database Management Systems', playlistId: 'PLrjkTql3jnm-CLxHftqLgkrZbM8fUt0vn' },
+                    { id: 'networks', title: 'Computer Networks', playlistId: 'PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx' },
+                    { id: 'system-design', title: 'System Design', playlistId: 'PLTCrU9sGyburBw9wNOHebv9SjlE4Elv5a' },
+                  ]}
+                />
               </div>
             </motion.div>
           </motion.div>

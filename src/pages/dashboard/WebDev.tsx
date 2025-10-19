@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { Globe, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import YouTubePlaylist from "@/components/YouTubePlaylist";
 
 const WebDev = () => {
   return (
@@ -42,43 +43,15 @@ const WebDev = () => {
                 Learn HTML, CSS, JavaScript, React, and Node.js through these comprehensive video tutorials.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  { id: 'PL0Zuz27SZ-6PFkIxaJ6Xx_X46avTM1aYw', title: 'HTML & CSS Masterclass' },
-                  { id: 'PL4cUxeGkcC9haFPT7J25Q9GRB_ZkFrQAc', title: 'JavaScript Complete Guide' },
-                  { id: 'PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d', title: 'React Tutorial for Beginners' },
-                  { id: 'PL55RiY5tL51q4D-B63KBnygU6opNPFk_q', title: 'Node.js & Express' }
-                ].map((video, index) => (
-                  <motion.div
-                    key={video.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="rounded-2xl overflow-hidden backdrop-blur-lg border border-sky-200/40 shadow-lg group relative"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(147, 197, 253, 0.15) 50%, rgba(248, 113, 113, 0.15) 100%)'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/10 via-blue-400/10 to-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
-                    <div className="relative">
-                      <div className="aspect-video">
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src={`https://www.youtube.com/embed/videoseries?list=${video.id}`}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="rounded-t-2xl"
-                        />
-                      </div>
-                      <div className="p-4 bg-white/20 backdrop-blur-sm">
-                        <h3 className="font-semibold text-foreground">{video.title}</h3>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="grid grid-cols-1 gap-6">
+                <YouTubePlaylist
+                  videos={[
+                    { id: 'html-css', title: 'HTML & CSS Masterclass', playlistId: 'PL0Zuz27SZ-6PFkIxaJ6Xx_X46avTM1aYw' },
+                    { id: 'js', title: 'JavaScript Complete Guide', playlistId: 'PL4cUxeGkcC9haFPT7J25Q9GRB_ZkFrQAc' },
+                    { id: 'react', title: 'React Tutorial for Beginners', playlistId: 'PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d' },
+                    { id: 'node', title: 'Node.js & Express', playlistId: 'PL55RiY5tL51q4D-B63KBnygU6opNPFk_q' },
+                  ]}
+                />
               </div>
             </motion.div>
           </motion.div>

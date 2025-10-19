@@ -9,7 +9,6 @@ interface LearningPathCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  topics: number;
   progress?: number;
   difficulty: "Beginner" | "Intermediate" | "Advanced";
   colorClass: string;
@@ -20,7 +19,7 @@ const LearningPathCard = ({
   icon: Icon,
   title,
   description,
-  topics,
+ 
   progress = 0,
   difficulty,
   colorClass,
@@ -61,9 +60,8 @@ const LearningPathCard = ({
 
           {/* Stats */}
           <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
-            <span>{topics} Topics</span>
-            <span>•</span>
-            <span>{progress}% Complete</span>
+            
+            <span>{progress}% Free</span>
           </div>
 
           {/* Progress Bar */}

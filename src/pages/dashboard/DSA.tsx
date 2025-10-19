@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { Binary, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import YouTubePlaylist from "@/components/YouTubePlaylist";
 
 const DSA = () => {
   return (
@@ -42,43 +43,15 @@ const DSA = () => {
                 Master arrays, trees, graphs, and dynamic programming with these curated video tutorials.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  { id: 'PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu', title: 'Data Structures Full Course' },
-                  { id: 'PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU', title: 'Algorithms Explained' },
-                  { id: 'PLBlnK6fEyqRj9lld8sWIUNwlKfdUoPd1Y', title: 'Dynamic Programming' },
-                  { id: 'PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz', title: 'Graph Algorithms' }
-                ].map((video, index) => (
-                  <motion.div
-                    key={video.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="rounded-2xl overflow-hidden backdrop-blur-lg border border-sky-200/40 shadow-lg group relative"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(147, 197, 253, 0.15) 50%, rgba(248, 113, 113, 0.15) 100%)'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/10 via-blue-400/10 to-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
-                    <div className="relative">
-                      <div className="aspect-video">
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src={`https://www.youtube.com/embed/videoseries?list=${video.id}`}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="rounded-t-2xl"
-                        />
-                      </div>
-                      <div className="p-4 bg-white/20 backdrop-blur-sm">
-                        <h3 className="font-semibold text-foreground">{video.title}</h3>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="grid grid-cols-1 gap-6">
+                <YouTubePlaylist
+                  videos={[
+                    { id: 'ds-full', title: 'Data Structures Full Course', playlistId: 'PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu' },
+                    { id: 'alg-explained', title: 'Algorithms Explained', playlistId: 'PLdo5W4Nhv31bbKJzrsKfMpo_grxuLl8LU' },
+                    { id: 'dp', title: 'Dynamic Programming', playlistId: 'PLBlnK6fEyqRj9lld8sWIUNwlKfdUoPd1Y' },
+                    { id: 'graphs', title: 'Graph Algorithms', playlistId: 'PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz' },
+                  ]}
+                />
               </div>
             </motion.div>
           </motion.div>

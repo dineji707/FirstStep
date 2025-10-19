@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { Brain, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import YouTubePlaylist from "@/components/YouTubePlaylist";
 
 const AIML = () => {
   return (
@@ -42,43 +43,15 @@ const AIML = () => {
                 Explore neural networks, deep learning, and AI applications with these expert tutorials.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  { id: 'PLZoTAELRMXVPGU70ZGsckrMdr0FteeRUi', title: 'Machine Learning Basics' },
-                  { id: 'PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi', title: 'Neural Networks Explained' },
-                  { id: 'PLeo1K3hjS3uu7CxAacxVndI4bE_o3BDtO', title: 'Deep Learning with Python' },
-                  { id: 'PLqnslRFeH2UqLwzS0AwKDKLrpYBKzLBy2', title: 'AI & Machine Learning Projects' }
-                ].map((video, index) => (
-                  <motion.div
-                    key={video.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="rounded-2xl overflow-hidden backdrop-blur-lg border border-sky-200/40 shadow-lg group relative"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(147, 197, 253, 0.15) 50%, rgba(248, 113, 113, 0.15) 100%)'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/10 via-blue-400/10 to-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
-                    <div className="relative">
-                      <div className="aspect-video">
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src={`https://www.youtube.com/embed/videoseries?list=${video.id}`}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="rounded-t-2xl"
-                        />
-                      </div>
-                      <div className="p-4 bg-white/20 backdrop-blur-sm">
-                        <h3 className="font-semibold text-foreground">{video.title}</h3>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="grid grid-cols-1 gap-6">
+                <YouTubePlaylist
+                  videos={[
+                    { id: 'ml-basics', title: 'Machine Learning Basics', playlistId: 'PLZoTAELRMXVPGU70ZGsckrMdr0FteeRUi' },
+                    { id: 'nn-explained', title: 'Neural Networks Explained', playlistId: 'PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi' },
+                    { id: 'dl-python', title: 'Deep Learning with Python', playlistId: 'PLeo1K3hjS3uu7CxAacxVndI4bE_o3BDtO' },
+                    { id: 'ai-projects', title: 'AI & Machine Learning Projects', playlistId: 'PLqnslRFeH2UqLwzS0AwKDKLrpYBKzLBy2' },
+                  ]}
+                />
               </div>
             </motion.div>
           </motion.div>

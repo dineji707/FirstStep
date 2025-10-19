@@ -19,8 +19,8 @@ const Dashboard = () => {
       icon: Binary,
       title: "Data Structures & Algorithms",
       description: "Master problem-solving with arrays, trees, graphs, and dynamic programming.",
-      topics: 45,
-      progress: 0,
+     
+      progress: 100,
       difficulty: "Intermediate" as const,
       colorClass: "gradient-primary",
       route: "/dashboard/dsa",
@@ -29,8 +29,8 @@ const Dashboard = () => {
       icon: Globe,
       title: "Web Development",
       description: "Build modern web apps with HTML, CSS, JavaScript, React, and Node.js.",
-      topics: 38,
-      progress: 0,
+     
+      progress: 100,
       difficulty: "Beginner" as const,
       colorClass: "gradient-hero",
       route: "/dashboard/webdev",
@@ -39,8 +39,8 @@ const Dashboard = () => {
       icon: Brain,
       title: "Artificial Intelligence & ML",
       description: "Explore machine learning, neural networks, and AI model deployment.",
-      topics: 32,
-      progress: 0,
+  
+      progress: 100,
       difficulty: "Advanced" as const,
       colorClass: "bg-success",
       route: "/dashboard/ai-ml",
@@ -49,21 +49,14 @@ const Dashboard = () => {
       icon: BookOpen,
       title: "Core CS Subjects",
       description: "Operating Systems, DBMS, Computer Networks, and System Design fundamentals.",
-      topics: 40,
-      progress: 0,
+      progress: 100,
       difficulty: "Intermediate" as const,
       colorClass: "bg-highlight",
       route: "/dashboard/corecs",
     },
   ];
 
-  const [overallProgress] = useState({
-    totalTopics: 155,
-    completedTopics: 0,
-    currentStreak: 0,
-    totalXP: 0,
-    level: 1,
-  });
+ 
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
@@ -81,74 +74,7 @@ const Dashboard = () => {
             </p>
           </div>
 
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            <Card className="p-6 hover:shadow-medium transition-all animate-fade-in">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Target className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-sm text-muted-foreground">Level</span>
-              </div>
-              <div className="text-3xl font-bold text-foreground">
-                {overallProgress.level}
-              </div>
-            </Card>
-
-            <Card className="p-6 hover:shadow-medium transition-all animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-success/10">
-                  <Trophy className="h-5 w-5 text-success" />
-                </div>
-                <span className="text-sm text-muted-foreground">Total XP</span>
-              </div>
-              <div className="text-3xl font-bold text-foreground">
-                {overallProgress.totalXP}
-              </div>
-            </Card>
-
-            <Card className="p-6 hover:shadow-medium transition-all animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-highlight/10">
-                  <Flame className="h-5 w-5 text-highlight" />
-                </div>
-                <span className="text-sm text-muted-foreground">Streak</span>
-              </div>
-              <div className="text-3xl font-bold text-foreground">
-                {overallProgress.currentStreak} days
-              </div>
-            </Card>
-
-            <Card className="p-6 hover:shadow-medium transition-all animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-secondary/10">
-                  <BookOpen className="h-5 w-5 text-secondary" />
-                </div>
-                <span className="text-sm text-muted-foreground">Progress</span>
-              </div>
-              <div className="text-3xl font-bold text-foreground">
-                {overallProgress.completedTopics}/{overallProgress.totalTopics}
-              </div>
-            </Card>
-          </div>
-
-          {/* Overall Progress */}
-          <Card className="p-6 mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <h3 className="text-xl font-bold text-foreground">Overall Progress</h3>
-                <p className="text-muted-foreground">Keep going! You're doing great 🌟</p>
-              </div>
-              <div className="text-2xl font-bold text-primary">
-                {Math.round((overallProgress.completedTopics / overallProgress.totalTopics) * 100)}%
-              </div>
-            </div>
-            <Progress 
-              value={(overallProgress.completedTopics / overallProgress.totalTopics) * 100} 
-              className="h-3"
-            />
-          </Card>
-
+          
           {/* Learning Paths */}
           <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.5s' }}>
             <h2 className="text-3xl font-bold mb-2">Your Learning Paths</h2>

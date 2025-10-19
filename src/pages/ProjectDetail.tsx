@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import { ArrowLeft, Code2 } from "lucide-react";
+import YouTubePlaylist from "@/components/YouTubePlaylist";
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
@@ -52,43 +53,15 @@ const ProjectDetail = () => {
                 Learn to build {projectName} from scratch with these step-by-step video tutorials.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  { id: 'PLillGF-RfqbYeckUaD1z6nviTp31GLTH8', title: 'Project Setup & Planning' },
-                  { id: 'PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d', title: 'Frontend Development' },
-                  { id: 'PL55RiY5tL51q4D-B63KBnygU6opNPFk_q', title: 'Backend Integration' },
-                  { id: 'PLqnslRFeH2UqLwzS0AwKDKLrpYBKzLBy2', title: 'Deployment & Testing' }
-                ].map((video, index) => (
-                  <motion.div
-                    key={video.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="rounded-2xl overflow-hidden backdrop-blur-lg border border-sky-200/40 shadow-lg group relative"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(147, 197, 253, 0.15) 50%, rgba(248, 113, 113, 0.15) 100%)'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/10 via-blue-400/10 to-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
-                    <div className="relative">
-                      <div className="aspect-video">
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src={`https://www.youtube.com/embed/videoseries?list=${video.id}`}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="rounded-t-2xl"
-                        />
-                      </div>
-                      <div className="p-4 bg-white/20 backdrop-blur-sm">
-                        <h3 className="font-semibold text-foreground">{video.title}</h3>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="grid grid-cols-1 gap-6">
+                <YouTubePlaylist
+                  videos={[
+                    { id: 'setup', title: 'Project Setup & Planning', playlistId: 'PLillGF-RfqbYeckUaD1z6nviTp31GLTH8' },
+                    { id: 'frontend', title: 'Frontend Development', playlistId: 'PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d' },
+                    { id: 'backend', title: 'Backend Integration', playlistId: 'PL55RiY5tL51q4D-B63KBnygU6opNPFk_q' },
+                    { id: 'deploy', title: 'Deployment & Testing', playlistId: 'PLqnslRFeH2UqLwzS0AwKDKLrpYBKzLBy2' },
+                  ]}
+                />
               </div>
             </motion.div>
           </motion.div>
